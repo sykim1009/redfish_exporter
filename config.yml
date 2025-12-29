@@ -1,0 +1,419 @@
+listen_port: 9640
+
+my_gpu:
+  auth:
+    username: "ADMIN"
+    password: "ADMIN"
+  suffix: "-ipmi"
+  metrics:
+    system:
+      base_path: "/redfish/v1/Systems/1"
+      metrics:
+        values:
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+          - name: "Status_State"
+            path: ["Status", "State"]
+            description: "System state"
+          - name: "PowerState"
+            path: ["PowerState"]
+        labels:
+          - name: "Model"
+            path: ["Model"]
+          - name: "Manufacturer"
+            path: ["Manufacturer"]
+          - name: "SerialNumber"
+            path: ["SerialNumber"]
+    processors:
+      base_path: "/redfish/v1/Systems/1/Processors"
+      iterate: "Members"
+      metrics:
+        values:
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+          - name: "Status_State"
+            path: ["Status", "State"]
+        labels:
+          - name: "Id"
+            path: ["Id"]
+          - name: "Manufacturer"
+            path: ["Manufacturer"]
+          - name: "InstructionSet"
+            path: ["InstructionSet"]
+          - name: "MaxSpeedMHz"
+            path: ["MaxSpeedMHz"]
+          - name: "Model"
+            path: ["Model"]
+          - name: "Name"
+            path: ["Name"]
+          - name: "ProcessorArchitecture"
+            path: ["ProcessorArchitecture"]
+          - name: "ProcessorType"
+            path: ["ProcessorType"]
+          - name: "Socket"
+            path: ["Socket"]
+          - name: "TotalCores"
+            path: ["TotalCores"]
+          - name: "TotalThreads"
+            path: ["TotalThreads"]
+    memory:
+      base_path: "/redfish/v1/Systems/1/Memory"
+      iterate: "Members"
+      metrics:
+        values:
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+          - name: "Status_State"
+            path: ["Status", "State"]
+          - name: "CapacityMiB"
+            path: ["CapacityMiB"]
+            type: "gauge"
+        labels:
+          - name: "DeviceLocator"
+            path: ["DeviceLocator"]
+          - name: "Id"
+            path: ["Id"]
+          - name: "Manufacturer"
+            path: ["Manufacturer"]
+          - name: "Model"
+            path: ["Model"]
+          - name: "MemoryDeviceType"
+            path: ["MemoryDeviceType"]
+          - name: "MemoryType"
+            path: ["MemoryType"]
+          - name: "Name"
+            path: ["Name"]
+          - name: "OperatingSpeedMhz"
+            path: ["OperatingSpeedMhz"]
+          - name: "PartNumber"
+            path: ["PartNumber"]
+          - name: "SerialNumber"
+            path: ["SerialNumber"]
+    gpu_system:
+      base_path: "/redfish/v1/Systems/HGX_Baseboard_0"
+      metrics:
+        values:
+          - name: "health_status"
+            path: ["Status", "Health"]
+          - name: "state"
+            path: ["Status", "State"]
+            description: "System state"
+          - name: "power_state"
+            path: ["PowerState"]
+        labels:
+          - name: "Id"
+            path: ["Id"]
+          - name: "Manufacturer"
+            path: ["Manufacturer"]
+    gpu_processors:
+      base_path: "/redfish/v1/Systems/HGX_Baseboard_0/Processors"
+      iterate: "Members"  # Members 배열을 순회
+      metrics:
+        values:
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+          - name: "Status_State"
+            path: ["Status", "State"]
+        labels:
+          - name: "BaseSpeedMHz"
+            path: ["BaseSpeedMHz"]
+          - name: "FirmwareVersion"
+            path: ["FirmwareVersion"]
+          - name: "Id"
+            path: ["Id"]
+          - name: "Manufacturer"
+            path: ["Manufacturer"]
+          - name: "MaxSpeedMHz"
+            path: ["MaxSpeedMHz"]
+          - name: "Model"
+            path: ["Model"]
+          - name: "Name"
+            path: ["Name"]
+          - name: "OperatingSpeedMHz"
+            path: ["OperatingSpeedMHz"]
+          - name: "PartNumber"
+            path: ["PartNumber"]
+          - name: "ProcessorType"
+            path: ["ProcessorType"]
+          - name: "SerialNumber"
+            path: ["SerialNumber"]
+          - name: "TotalThreads"
+            path: ["TotalThreads"]
+    gpu_memory:
+      base_path: "/redfish/v1/Systems/HGX_Baseboard_0/Memory"
+      iterate: "Members"
+      metrics:
+        values:
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+          - name: "Status_State"
+            path: ["Status", "State"]
+          - name: "CapacityMiB"
+            path: ["CapacityMiB"]
+            type: "gauge"
+        labels:
+          - name: "Id"
+            path: ["Id"]
+          - name: "Manufacturer"
+            path: ["Manufacturer"]
+          - name: "MemoryDeviceType"
+            path: ["MemoryDeviceType"]
+          - name: "MemoryType"
+            path: ["MemoryType"]
+          - name: "Name"
+            path: ["Name"]
+          - name: "OperatingSpeedMhz"
+            path: ["OperatingSpeedMhz"]
+    thermal:
+      base_path: "/redfish/v1/Chassis/1/Thermal"
+      iterate_field: "Temperatures"
+      metrics:
+        values:
+          - name: "ReadingCelsius"
+            path: ["ReadingCelsius"]
+            type: "gauge"
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+        labels:
+          - name: "MemberId"
+            path: ["MemberId"]
+          - name: "Name"
+            path: ["Name"]
+          - name: "SensorNumber"
+            path: ["SensorNumber"]
+          - name: "upper_threshold_critical"
+            path: ["UpperThresholdCritical"]
+    fans:
+      base_path: "/redfish/v1/Chassis/1/Thermal"
+      iterate_field: "Fans"
+      metrics:
+        values:
+          - name: "Reading"
+            path: ["Reading"]
+            type: "gauge"
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+        labels:
+          - name: "MemberId"
+            path: ["MemberId"]
+          - name: "Name"
+            path: ["Name"]
+          - name: "SensorNumber"
+            path: ["SensorNumber"]
+          - name: "linkvalue"
+            value: "fancontroller"
+    power_control:
+      base_path: "/redfish/v1/Chassis/1/Power"
+      iterate_field: "PowerControl"
+      metrics:
+        values:
+          - name: "PowerConsumedWatts"
+            path: ["PowerConsumedWatts"]
+            type: "gauge"
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+          - name: "Status_State"
+            path: ["Status", "State"]
+        labels:
+          - name: "MemberId"
+            path: ["MemberId"]
+          - name: "Name"
+            path: ["Name"]
+    powersupplies:
+      base_path: "/redfish/v1/Chassis/1/Power"
+      iterate_field: "PowerSupplies"
+      metrics:
+        values:
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+          - name: "Status_State"
+            path: ["Status", "State"]
+        labels:
+          - name: "FirmwareVersion"
+            path: ["FirmwareVersion"]
+          - name: "MemberId"
+            path: ["MemberId"]
+          - name: "Model"
+            path: ["Model"]
+          - name: "Name"
+            path: ["Name"]
+          - name: "PartNumber"
+            path: ["PartNumber"]
+          - name: "SerialNumber"
+            path: ["SerialNumber"]
+    storages:
+      base_path: "/redfish/v1/Systems/1/Storage"
+      iterate: "Members"
+      metrics:
+        values:
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+          - name: "Status_State"
+            path: ["Status", "State"]
+        labels:
+          - name: "Id"
+            path: ["Id"]
+          - name: "Name"
+            path: ["Name"]
+    ha_controller:
+      base_path: "/redfish/v1/Systems/1/Storage/HA-RAID/Controllers/0"
+      metrics:
+        values:
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+          - name: "Status_State"
+            path: ["Status", "State"]
+        labels:
+          - name: "FirmwareVersion"
+            path: ["FirmwareVersion"]
+          - name: "Id"
+            path: ["Id"]
+          - name: "Manufacturer"
+            path: ["Manufacturer"]  
+          - name: "Model"
+            path: ["Model"]
+          - name: "Name"
+            path: ["Name"]
+          - name: "SerialNumber"
+            path: ["SerialNumber"]
+          - name: "parent_id"
+            value: "HA-RAID"
+    ha_volume:
+      base_path: "/redfish/v1/Systems/1/Storage/HA-RAID/Volumes/Controller.0.Volume.1"
+      metrics:
+        values:
+          - name: "CapacityBytes"
+            path: ["CapacityBytes"]
+            type: "gauge"
+        labels:
+          - name: "Id"
+            path: ["Id"]
+          - name: "VolumeType"
+            path: ["VolumeType"]
+          - name: "parent_id"
+            value: "HA-RAID"
+    ha_disks:
+      base_path: "/redfish/v1/Chassis/HA-RAID.0.StorageEnclosure.0/Drives"
+      iterate: "Members"
+      metrics:
+        values:
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+          - name: "Status_State"
+            path: ["Status", "State"]
+          - name: "CapacityBytes"
+            path: ["CapacityBytes"]
+            type: "gauge"
+          - name: "CapacityBytes"
+            path: ["CapacityBytes"]
+            type: "gauge"
+        labels:
+          - name: "Id"
+            path: ["Id"]
+          - name: "Manufacturer"
+            path: ["Manufacturer"]
+          - name: "MediaType"
+            path: ["MediaType"]
+          - name: "Model"
+            path: ["Model"]
+          - name: "Name"
+            path: ["Name"]
+          - name: "SerialNumber"
+            path: ["SerialNumber"]
+          - name: "parent_id"
+            value: "HA-RAID"
+    nvme_controller:
+      base_path: "/redfish/v1/Systems/1/Storage/NVMeSSD/Controllers/0"
+      metrics:
+        values:
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+          - name: "Status_State"
+            path: ["Status", "State"]
+        labels:
+          - name: "FirmwareVersion"
+            path: ["FirmwareVersion"]
+          - name: "Id"
+            path: ["Id"]
+          - name: "Manufacturer"
+            path: ["Manufacturer"]  
+          - name: "Model"
+            path: ["Model"]
+          - name: "Name"
+            path: ["Name"]
+          - name: "SerialNumber"
+            path: ["SerialNumber"]
+          - name: "parent_id"
+            value: "NVMeSSD"
+    nvme_disks:
+      base_path: "/redfish/v1/Chassis/NVMeSSD.0.Group.0.StorageBackplane/Drives"
+      iterate: "Members"
+      metrics:
+        values:
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+          - name: "Status_State"
+            path: ["Status", "State"]
+          - name: "CapacityBytes"
+            path: ["CapacityBytes"]
+            type: "gauge"
+          - name: "CapacityBytes"
+            path: ["CapacityBytes"]
+            type: "gauge"
+        labels:
+          - name: "Id"
+            path: ["Id"]
+          - name: "Manufacturer"
+            path: ["Manufacturer"]
+          - name: "MediaType"
+            path: ["MediaType"]
+          - name: "Model"
+            path: ["Model"]
+          - name: "Name"
+            path: ["Name"]
+          - name: "SerialNumber"
+            path: ["SerialNumber"]
+          - name: "parent_id"
+            value: "NVMeSSD"
+    pcie_devices:
+      base_path: "/redfish/v1/Chassis/1/PCIeDevices"
+      iterate: "Members"
+      metrics:
+        values:
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+          - name: "Status_State"
+            path: ["Status", "State"]
+        labels:
+          - name: "FirmwareVersion"
+            path: ["FirmwareVersion"]
+          - name: "Id"
+            path: ["Id"]
+          - name: "Manufacturer"
+            path: ["Manufacturer"]
+          - name: "Model"
+            path: ["Model"]
+          - name: "Name"
+            path: ["Name"]
+          - name: "PartNumber"
+            path: ["PartNumber"]
+          - name: "SerialNumber"
+            path: ["SerialNumber"]
+    ethernetinterfaces:
+      base_path: "/redfish/v1/Systems/1/EthernetInterfaces"
+      iterate: "Members"
+      metrics:
+        values:
+          - name: "Status_Health"
+            path: ["Status", "Health"]
+          - name: "Status_State"
+            path: ["Status", "State"]
+        labels:
+          - name: "Id"
+            path: ["Id"]
+          - name: "LinkStatus"
+            path: ["LinkStatus"]
+          - name: "MACAddress"
+            path: ["MACAddress"]
+          - name: "Name"
+            path: ["Name"]
