@@ -1,8 +1,12 @@
-# redfish_exporter
+# Redfish Exporter
 
 A Prometheus exporter for collecting hardware metrics from servers via the Redfish API. This exporter specializes in monitoring GPU servers and standard server infrastructure through IPMI/Redfish interfaces.
-Architecture
-Overview
+
+## Architecture
+
+### Overview
+
+```
 ┌─────────────┐          ┌──────────────────┐          ┌─────────────┐
 │             │          │                  │          │             │
 │  Prometheus │◄─────────│ Redfish Exporter │◄─────────│   Redfish   │
@@ -19,140 +23,163 @@ Overview
                          │ - Endpoints  │
                          │ - Metrics    │
                          └──────────────┘
-Component Architecture
-1. redfish_exporter.py - Main Application
+```
 
-FastAPI-based HTTP server
-Handles incoming Prometheus scrape requests
-Routes requests to appropriate collectors
-Manages configuration loading
-Provides health check endpoint
+### Component Architecture
 
-2. collector.py - Metrics Collection Engine
+#### 1. **redfish_exporter.py** - Main Application
+- FastAPI-based HTTP server
+- Handles incoming Prometheus scrape requests
+- Routes requests to appropriate collectors
+- Manages configuration loading
+- Provides health check endpoint
 
-RedfishMetricsCollector class handles all metric collection
-Connects to Redfish API endpoints
-Collects hardware health and status information
-Transforms Redfish data into Prometheus metrics
-Implements connection pooling and error handling
+#### 2. **collector.py** - Metrics Collection Engine
+- `RedfishMetricsCollector` class handles all metric collection
+- Connects to Redfish API endpoints
+- Collects hardware health and status information
+- Transforms Redfish data into Prometheus metrics
+- Implements connection pooling and error handling
 
-3. config.yml - Configuration Management
+#### 3. **config.yml** - Configuration Management
+- Authentication credentials
+- Metric definitions and paths
+- Endpoint configurations
+- Server-specific settings
 
-Authentication credentials
-Metric definitions and paths
-Endpoint configurations
-Server-specific settings
+### Data Flow
 
-Data Flow
-
-Request Phase
-
+1. **Request Phase**
+   ```
    Prometheus → GET /{endpoint}?target={host}&code={profile}
+   ```
 
-Authentication Phase
-
+2. **Authentication Phase**
+   ```
    Exporter → Load credentials from config.yml
    Exporter → Login to Redfish API
+   ```
 
-Collection Phase
-
+3. **Collection Phase**
+   ```
    Exporter → Query Redfish endpoints
    Exporter → Parse JSON responses
    Exporter → Map to Prometheus metrics
+   ```
 
-Response Phase
-
+4. **Response Phase**
+   ```
    Exporter → Format as Prometheus metrics
    Exporter → Return to Prometheus
-Features
-Supported Metrics
-System Metrics
+   ```
 
-System health status
-Power state
-Manufacturer information
-Model and serial numbers
+## Features
 
-Processor Metrics
+### Supported Metrics
 
-CPU health status
-Clock speeds (base, max, operating)
-Core and thread counts
-Processor type and architecture
-GPU processor information (for HGX systems)
+#### System Metrics
+- System health status
+- Power state
+- Manufacturer information
+- Model and serial numbers
 
-Memory Metrics
+#### Processor Metrics
+- CPU health status
+- Clock speeds (base, max, operating)
+- Core and thread counts
+- Processor type and architecture
+- GPU processor information (for HGX systems)
 
-Memory health status
-Capacity (MiB)
-Memory type and speed
-Device location
-Manufacturer details
+#### Memory Metrics
+- Memory health status
+- Capacity (MiB)
+- Memory type and speed
+- Device location
+- Manufacturer details
 
-GPU-Specific Metrics (HGX Baseboard)
+#### GPU-Specific Metrics (HGX Baseboard)
+- GPU system health
+- GPU processor status
+- GPU memory information
+- FPGA status
 
-GPU system health
-GPU processor status
-GPU memory information
-FPGA status
+#### Additional Metrics
+- Thermal sensors
+- Fan speeds
+- Power consumption
+- Power supply status
+- Storage controllers
+- PCIe devices
+- Network interfaces
 
-Additional Metrics
+### Status Mapping
 
-Thermal sensors
-Fan speeds
-Power consumption
-Power supply status
-Storage controllers
-PCIe devices
-Network interfaces
-
-Status Mapping
 The exporter maps Redfish status values to numeric codes for Prometheus:
-python'ok': 0           # Healthy
+
+```python
+'ok': 0           # Healthy
 'on': 1           # Powered on
 'critical': 1     # Critical error
 'warning': 2      # Warning state
 'unknown': 5      # Unknown status
 'absent': 6       # Component absent
 'get_failed': 99  # API fetch failed
-Installation
-Prerequisites
+```
 
-Python 3.8+
-Access to server BMC/IPMI interface
-Network connectivity to Redfish API (port 443)
+## Installation
 
-Dependencies
-bashpip install redfish
+### Prerequisites
+
+- Python 3.8+
+- Access to server BMC/IPMI interface
+- Network connectivity to Redfish API (port 443)
+
+### Dependencies
+
+```bash
+pip install redfish
 pip install fastapi
 pip install uvicorn
 pip install prometheus-client
 pip install pyyaml
+```
+
 Or install from requirements.txt:
-bashpip install -r requirements.txt
-Setup
 
-Clone the repository:
+```bash
+pip install -r requirements.txt
+```
 
-bashgit clone https://github.com/yourusername/redfish-exporter.git
+### Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/redfish-exporter.git
 cd redfish-exporter
+```
 
-Configure your servers in config.yml:
-
-yamllisten_port: 9640
+2. Configure your servers in `config.yml`:
+```yaml
+listen_port: 9640
 
 haein_gpu:
   auth:
     username: "ADMIN"
     password: "YourPassword"
   suffix: "-ipmi"
+```
 
-Run the exporter:
+3. Run the exporter:
+```bash
+python redfish_exporter.py
+```
 
-bashpython redfish_exporter.py
-Usage
-Command Line Options
-bashpython redfish_exporter.py [OPTIONS]
+## Usage
+
+### Command Line Options
+
+```bash
+python redfish_exporter.py [OPTIONS]
 
 Options:
   -p, --port PORT       Listening port (default: from config.yml)
@@ -160,19 +187,36 @@ Options:
   -w, --warning        Set warning level logging
   -e, --error          Set error level logging
   -l, --logging PATH   Log file path (default: stdout)
-Examples
+```
+
+### Examples
+
 Basic usage:
-bashpython redfish_exporter.py
+```bash
+python redfish_exporter.py
+```
+
 With custom port and debug logging:
-bashpython redfish_exporter.py -p 9641 -d
+```bash
+python redfish_exporter.py -p 9641 -d
+```
+
 With log file:
-bashpython redfish_exporter.py -l /var/log/redfish_exporter.log
-API Endpoints
-Health Check
-bashGET /
+```bash
+python redfish_exporter.py -l /var/log/redfish_exporter.log
+```
+
+### API Endpoints
+
+#### Health Check
+```bash
+GET /
 Response: {"message": "Hello This is Redfish Exporter"}
-Metrics Endpoint
-bashGET /{endpoint}?target={hostname}&code={profile}
+```
+
+#### Metrics Endpoint
+```bash
+GET /{endpoint}?target={hostname}&code={profile}
 
 Parameters:
   - endpoint: Metric endpoint name (e.g., "metrics")
@@ -181,9 +225,14 @@ Parameters:
 
 Example:
 curl "http://localhost:9640/metrics?target=server01&code=haein_gpu"
-Prometheus Configuration
-Add to your prometheus.yml:
-yamlscrape_configs:
+```
+
+### Prometheus Configuration
+
+Add to your `prometheus.yml`:
+
+```yaml
+scrape_configs:
   - job_name: 'redfish'
     scrape_interval: 60s
     scrape_timeout: 30s
@@ -202,9 +251,14 @@ yamlscrape_configs:
         replacement: localhost:9640
       - target_label: __param_code
         replacement: haein_gpu
-Configuration Reference
-Configuration Structure
-yamllisten_port: 9640          # Exporter listening port
+```
+
+## Configuration Reference
+
+### Configuration Structure
+
+```yaml
+listen_port: 9640          # Exporter listening port
 
 profile_name:              # Configuration profile
   auth:
@@ -226,11 +280,13 @@ profile_name:              # Configuration profile
         labels:            # Labels to attach
           - name: "Model"
             path: ["Model"]
-Adding New Server Profiles
+```
 
-Create a new profile in config.yml:
+### Adding New Server Profiles
 
-yamlnew_server:
+1. Create a new profile in `config.yml`:
+```yaml
+new_server:
   auth:
     username: "admin"
     password: "password"
@@ -242,10 +298,11 @@ yamlnew_server:
         values:
           - name: "health_status"
             path: ["Status", "Health"]
+```
 
-Update collector.py if custom logic is needed:
-
-pythonif self._code == 'new_server':
+2. Update collector.py if custom logic is needed:
+```python
+if self._code == 'new_server':
     # Add custom collection logic
     pass
 ```
@@ -327,6 +384,7 @@ Solution:
 ## Development
 
 ### Code Structure
+
 ```
 redfish-exporter/
 ├── redfish_exporter.py    # FastAPI application
@@ -334,20 +392,23 @@ redfish-exporter/
 ├── config.yml            # Server configurations
 ├── requirements.txt      # Python dependencies
 └── README.md            # Documentation
-Adding New Metrics
+```
 
-Define metric in config.yml:
+### Adding New Metrics
 
-yamlnew_metric:
+1. Define metric in config.yml:
+```yaml
+new_metric:
   base_path: "/redfish/v1/NewEndpoint"
   metrics:
     values:
       - name: "new_value"
         path: ["Path", "To", "Value"]
+```
 
-Add collection method in collector.py:
-
-pythondef _collect_new_metric(self, data):
+2. Add collection method in collector.py:
+```python
+def _collect_new_metric(self, data):
     """Collect new metric"""
     value = self._safe_get(data, 'Path', 'To', 'Value')
     labels = {
@@ -359,9 +420,13 @@ pythondef _collect_new_metric(self, data):
         value=self._map_status(value),
         labels=labels
     )
-Testing
+```
+
+### Testing
+
 Manual testing:
-bash# Test health endpoint
+```bash
+# Test health endpoint
 curl http://localhost:9640/
 
 # Test metrics collection
@@ -369,50 +434,48 @@ curl "http://localhost:9640/metrics?target=testserver&code=haein_gpu"
 
 # Test with debug logging
 python redfish_exporter.py -d
-Security Considerations
+```
 
-Credential Management
+## Security Considerations
 
-Store config.yml securely
-Use restrictive file permissions (600)
-Consider using environment variables for passwords
-Rotate credentials regularly
+1. **Credential Management**
+   - Store config.yml securely
+   - Use restrictive file permissions (600)
+   - Consider using environment variables for passwords
+   - Rotate credentials regularly
 
+2. **Network Security**
+   - Use HTTPS for Redfish connections (enforced)
+   - Restrict exporter port access
+   - Use VLANs for management network
+   - Implement firewall rules
 
-Network Security
+3. **Access Control**
+   - Create dedicated BMC user for monitoring
+   - Assign minimal required privileges
+   - Monitor for unauthorized access
+   - Audit BMC access logs
 
-Use HTTPS for Redfish connections (enforced)
-Restrict exporter port access
-Use VLANs for management network
-Implement firewall rules
+## License
 
-
-Access Control
-
-Create dedicated BMC user for monitoring
-Assign minimal required privileges
-Monitor for unauthorized access
-Audit BMC access logs
-
-
-
-License
 [Specify your license here]
-Contributing
+
+## Contributing
+
 Contributions are welcome! Please:
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-Fork the repository
-Create a feature branch
-Commit your changes
-Push to the branch
-Create a Pull Request
+## Support
 
-Support
 For issues and questions:
+- Create an issue on GitHub
+- Check existing issues for solutions
+- Provide debug logs when reporting issues
 
-Create an issue on GitHub
-Check existing issues for solutions
-Provide debug logs when reporting issues
+---
 
-
-Note: This exporter is designed for production use but always test in a non-production environment first. Monitor BMC load and adjust scrape intervals accordingly.
+**Note**: This exporter is designed for production use but always test in a non-production environment first. Monitor BMC load and adjust scrape intervals accordingly.
