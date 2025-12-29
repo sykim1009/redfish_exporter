@@ -1,0 +1,327 @@
+# HELP health Server Monitoring Data
+# TYPE health gauge
+health{module="connection",status="OK"} 1.0
+health{module="login",status="OK"} 1.0
+health{Manufacturer="Supermicro",Model="SYS-A22GA-NBRT",SerialNumber="***************",Status_Health="OK",module="system"} 0.0
+health{Manufacturer="Supermicro",Model="SYS-A22GA-NBRT",SerialNumber="***************",Status_State="Enabled",module="system"} 0.0
+health{Manufacturer="Supermicro",Model="SYS-A22GA-NBRT",PowerState="On",SerialNumber="***************",module="system"} 1.0
+health{Id="1",InstructionSet="x86-64",Manufacturer="Intel(R) Corporation",MaxSpeedMHz="3900",Model="Intel(R) Xeon(R) 6960P",Name="Processor",ProcessorArchitecture="x86",ProcessorType="CPU",Socket="CPU1",Status_Health="OK",TotalCores="72",TotalThreads="144",module="processors"} 0.0
+health{Id="1",InstructionSet="x86-64",Manufacturer="Intel(R) Corporation",MaxSpeedMHz="3900",Model="Intel(R) Xeon(R) 6960P",Name="Processor",ProcessorArchitecture="x86",ProcessorType="CPU",Socket="CPU1",Status_State="Enabled",TotalCores="72",TotalThreads="144",module="processors"} 0.0
+health{Id="2",InstructionSet="x86-64",Manufacturer="Intel(R) Corporation",MaxSpeedMHz="3900",Model="Intel(R) Xeon(R) 6960P",Name="Processor",ProcessorArchitecture="x86",ProcessorType="CPU",Socket="CPU2",Status_Health="OK",TotalCores="72",TotalThreads="144",module="processors"} 0.0
+health{Id="2",InstructionSet="x86-64",Manufacturer="Intel(R) Corporation",MaxSpeedMHz="3900",Model="Intel(R) Xeon(R) 6960P",Name="Processor",ProcessorArchitecture="x86",ProcessorType="CPU",Socket="CPU2",Status_State="Enabled",TotalCores="72",TotalThreads="144",module="processors"} 0.0
+health{DeviceLocator="P1-DIMMA1",Id="1",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P1-DIMMA1",Id="1",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P1-DIMMA1",Id="1",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P1-DIMMB1",Id="2",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P1-DIMMB1",Id="2",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P1-DIMMB1",Id="2",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P1-DIMMC1",Id="3",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P1-DIMMC1",Id="3",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P1-DIMMC1",Id="3",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P1-DIMMD1",Id="4",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P1-DIMMD1",Id="4",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P1-DIMMD1",Id="4",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P1-DIMME1",Id="5",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P1-DIMME1",Id="5",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P1-DIMME1",Id="5",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P1-DIMMF1",Id="6",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P1-DIMMF1",Id="6",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P1-DIMMF1",Id="6",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P1-DIMMG1",Id="7",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P1-DIMMG1",Id="7",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P1-DIMMG1",Id="7",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P1-DIMMH1",Id="8",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P1-DIMMH1",Id="8",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P1-DIMMH1",Id="8",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P1-DIMMI1",Id="9",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P1-DIMMI1",Id="9",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P1-DIMMI1",Id="9",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P1-DIMMJ1",Id="10",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P1-DIMMJ1",Id="10",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P1-DIMMJ1",Id="10",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P1-DIMMK1",Id="11",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P1-DIMMK1",Id="11",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P1-DIMMK1",Id="11",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P1-DIMML1",Id="12",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P1-DIMML1",Id="12",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P1-DIMML1",Id="12",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P2-DIMMA1",Id="13",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P2-DIMMA1",Id="13",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P2-DIMMA1",Id="13",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P2-DIMMB1",Id="14",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P2-DIMMB1",Id="14",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P2-DIMMB1",Id="14",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P2-DIMMC1",Id="15",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P2-DIMMC1",Id="15",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P2-DIMMC1",Id="15",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P2-DIMMD1",Id="16",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P2-DIMMD1",Id="16",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P2-DIMMD1",Id="16",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P2-DIMME1",Id="17",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P2-DIMME1",Id="17",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P2-DIMME1",Id="17",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P2-DIMMF1",Id="18",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P2-DIMMF1",Id="18",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P2-DIMMF1",Id="18",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P2-DIMMG1",Id="19",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P2-DIMMG1",Id="19",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P2-DIMMG1",Id="19",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P2-DIMMH1",Id="20",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P2-DIMMH1",Id="20",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P2-DIMMH1",Id="20",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P2-DIMMI1",Id="21",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P2-DIMMI1",Id="21",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P2-DIMMI1",Id="21",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P2-DIMMJ1",Id="22",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P2-DIMMJ1",Id="22",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P2-DIMMJ1",Id="22",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P2-DIMMK1",Id="23",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P2-DIMMK1",Id="23",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P2-DIMMK1",Id="23",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{DeviceLocator="P2-DIMML1",Id="24",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_Health="OK",module="memory"} 0.0
+health{DeviceLocator="P2-DIMML1",Id="24",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",Status_State="Enabled",module="memory"} 0.0
+health{CapacityMiB="98304",DeviceLocator="P2-DIMML1",Id="24",Manufacturer="SK Hynix",MemoryDeviceType="DDR5",MemoryType="DRAM",Model="None",Name="Memory",OperatingSpeedMhz="6400",PartNumber="***-***",SerialNumber="******************",module="memory"} 98304.0
+health{Id="HGX_Baseboard_0",Manufacturer="NVIDIA",health_status="OK",module="gpu_system"} 0.0
+health{Id="HGX_Baseboard_0",Manufacturer="NVIDIA",module="gpu_system",state="Enabled"} 0.0
+health{Id="HGX_Baseboard_0",Manufacturer="NVIDIA",module="gpu_system",power_state="On"} 1.0
+health{BaseSpeedMHz="None",FirmwareVersion="1.73",Id="FPGA_0",Manufacturer="NVIDIA",MaxSpeedMHz="None",Model="NA",Name="Processor",OperatingSpeedMHz="None",PartNumber="***-***",ProcessorType="FPGA",SerialNumber="**",Status_Health="OK",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="None",FirmwareVersion="1.73",Id="FPGA_0",Manufacturer="NVIDIA",MaxSpeedMHz="None",Model="NA",Name="Processor",OperatingSpeedMHz="None",PartNumber="***-***",ProcessorType="FPGA",SerialNumber="**",Status_State="Enabled",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_1",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_Health="OK",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_1",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_State="Enabled",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_2",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_Health="OK",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_2",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_State="Enabled",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_3",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_Health="OK",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_3",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_State="Enabled",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_4",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_Health="OK",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_4",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_State="Enabled",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_5",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_Health="OK",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_5",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_State="Enabled",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_6",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_Health="OK",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_6",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_State="Enabled",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_7",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_Health="OK",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_7",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_State="Enabled",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_8",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_Health="OK",TotalThreads="None",module="gpu_processors"} 0.0
+health{BaseSpeedMHz="1155",FirmwareVersion="97.00.88.00.0F",Id="GPU_SXM_8",Manufacturer="NVIDIA",MaxSpeedMHz="1965",Model="B200 180GB HBM3e",Name="Processor",OperatingSpeedMHz="1965",PartNumber="***-***",ProcessorType="GPU",SerialNumber="*************",Status_State="Enabled",TotalThreads="None",module="gpu_processors"} 0.0
+health{Id="GPU_SXM_1_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_Health="OK",module="gpu_memory"} 0.0
+health{Id="GPU_SXM_1_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_State="Enabled",module="gpu_memory"} 0.0
+health{CapacityMiB="183359",Id="GPU_SXM_1_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",module="gpu_memory"} 183359.0
+health{Id="GPU_SXM_2_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_Health="OK",module="gpu_memory"} 0.0
+health{Id="GPU_SXM_2_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_State="Enabled",module="gpu_memory"} 0.0
+health{CapacityMiB="183359",Id="GPU_SXM_2_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",module="gpu_memory"} 183359.0
+health{Id="GPU_SXM_3_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_Health="OK",module="gpu_memory"} 0.0
+health{Id="GPU_SXM_3_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_State="Enabled",module="gpu_memory"} 0.0
+health{CapacityMiB="183359",Id="GPU_SXM_3_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",module="gpu_memory"} 183359.0
+health{Id="GPU_SXM_4_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_Health="OK",module="gpu_memory"} 0.0
+health{Id="GPU_SXM_4_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_State="Enabled",module="gpu_memory"} 0.0
+health{CapacityMiB="183359",Id="GPU_SXM_4_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",module="gpu_memory"} 183359.0
+health{Id="GPU_SXM_5_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_Health="OK",module="gpu_memory"} 0.0
+health{Id="GPU_SXM_5_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_State="Enabled",module="gpu_memory"} 0.0
+health{CapacityMiB="183359",Id="GPU_SXM_5_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",module="gpu_memory"} 183359.0
+health{Id="GPU_SXM_6_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_Health="OK",module="gpu_memory"} 0.0
+health{Id="GPU_SXM_6_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_State="Enabled",module="gpu_memory"} 0.0
+health{CapacityMiB="183359",Id="GPU_SXM_6_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",module="gpu_memory"} 183359.0
+health{Id="GPU_SXM_7_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_Health="OK",module="gpu_memory"} 0.0
+health{Id="GPU_SXM_7_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_State="Enabled",module="gpu_memory"} 0.0
+health{CapacityMiB="183359",Id="GPU_SXM_7_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",module="gpu_memory"} 183359.0
+health{Id="GPU_SXM_8_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_Health="OK",module="gpu_memory"} 0.0
+health{Id="GPU_SXM_8_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",Status_State="Enabled",module="gpu_memory"} 0.0
+health{CapacityMiB="183359",Id="GPU_SXM_8_DRAM_0",Manufacturer="None",MemoryDeviceType="HBM",MemoryType="DRAM",Name="DIMM Slot",OperatingSpeedMhz="3996",module="gpu_memory"} 183359.0
+health{MemberId="0",Name="CPU1 Temp",ReadingCelsius="49",SensorNumber="1",module="thermal",upper_threshold_critical="107"} 49.0
+health{MemberId="0",Name="CPU1 Temp",SensorNumber="1",Status_Health="OK",module="thermal",upper_threshold_critical="107"} 0.0
+health{MemberId="1",Name="CPU2 Temp",ReadingCelsius="45",SensorNumber="2",module="thermal",upper_threshold_critical="107"} 45.0
+health{MemberId="1",Name="CPU2 Temp",SensorNumber="2",Status_Health="OK",module="thermal",upper_threshold_critical="107"} 0.0
+health{MemberId="2",Name="Inlet Temp",ReadingCelsius="25",SensorNumber="9",module="thermal",upper_threshold_critical="42"} 25.0
+health{MemberId="2",Name="Inlet Temp",SensorNumber="9",Status_Health="OK",module="thermal",upper_threshold_critical="42"} 0.0
+health{MemberId="3",Name="System Temp",ReadingCelsius="29",SensorNumber="11",module="thermal",upper_threshold_critical="85"} 29.0
+health{MemberId="3",Name="System Temp",SensorNumber="11",Status_Health="OK",module="thermal",upper_threshold_critical="85"} 0.0
+health{MemberId="4",Name="Peripheral Temp",ReadingCelsius="38",SensorNumber="12",module="thermal",upper_threshold_critical="85"} 38.0
+health{MemberId="4",Name="Peripheral Temp",SensorNumber="12",Status_Health="OK",module="thermal",upper_threshold_critical="85"} 0.0
+health{MemberId="5",Name="AOM_SAS Temp",ReadingCelsius="41",SensorNumber="15",module="thermal",upper_threshold_critical="105"} 41.0
+health{MemberId="5",Name="AOM_SAS Temp",SensorNumber="15",Status_Health="OK",module="thermal",upper_threshold_critical="105"} 0.0
+health{MemberId="6",Name="CPU1_VRMIN Temp",ReadingCelsius="38",SensorNumber="16",module="thermal",upper_threshold_critical="100"} 38.0
+health{MemberId="6",Name="CPU1_VRMIN Temp",SensorNumber="16",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="7",Name="CPU1_VRMON Temp",ReadingCelsius="34",SensorNumber="17",module="thermal",upper_threshold_critical="100"} 34.0
+health{MemberId="7",Name="CPU1_VRMON Temp",SensorNumber="17",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="8",Name="CPU1_VRMHV Temp",ReadingCelsius="41",SensorNumber="19",module="thermal",upper_threshold_critical="100"} 41.0
+health{MemberId="8",Name="CPU1_VRMHV Temp",SensorNumber="19",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="9",Name="CPU2_VRMIN Temp",ReadingCelsius="39",SensorNumber="22",module="thermal",upper_threshold_critical="100"} 39.0
+health{MemberId="9",Name="CPU2_VRMIN Temp",SensorNumber="22",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="10",Name="CPU2_VRMON Temp",ReadingCelsius="37",SensorNumber="23",module="thermal",upper_threshold_critical="100"} 37.0
+health{MemberId="10",Name="CPU2_VRMON Temp",SensorNumber="23",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="11",Name="CPU2_VRMHV Temp",ReadingCelsius="41",SensorNumber="25",module="thermal",upper_threshold_critical="100"} 41.0
+health{MemberId="11",Name="CPU2_VRMHV Temp",SensorNumber="25",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="12",Name="M2SSD Temp",ReadingCelsius="34",SensorNumber="80",module="thermal",upper_threshold_critical="77"} 34.0
+health{MemberId="12",Name="M2SSD Temp",SensorNumber="80",Status_Health="OK",module="thermal",upper_threshold_critical="77"} 0.0
+health{MemberId="13",Name="AOC_NIC2 Temp",ReadingCelsius="53",SensorNumber="96",module="thermal",upper_threshold_critical="100"} 53.0
+health{MemberId="13",Name="AOC_NIC2 Temp",SensorNumber="96",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="14",Name="AOC_PORT3 Temp",ReadingCelsius="55",SensorNumber="124",module="thermal",upper_threshold_critical="75"} 55.0
+health{MemberId="14",Name="AOC_PORT3 Temp",SensorNumber="124",Status_Health="OK",module="thermal",upper_threshold_critical="75"} 0.0
+health{MemberId="15",Name="AOC_PORT4 Temp",ReadingCelsius="51",SensorNumber="125",module="thermal",upper_threshold_critical="75"} 51.0
+health{MemberId="15",Name="AOC_PORT4 Temp",SensorNumber="125",Status_Health="OK",module="thermal",upper_threshold_critical="75"} 0.0
+health{MemberId="16",Name="AOC_PORT5 Temp",ReadingCelsius="49",SensorNumber="126",module="thermal",upper_threshold_critical="75"} 49.0
+health{MemberId="16",Name="AOC_PORT5 Temp",SensorNumber="126",Status_Health="OK",module="thermal",upper_threshold_critical="75"} 0.0
+health{MemberId="17",Name="AOC_PORT6 Temp",ReadingCelsius="45",SensorNumber="127",module="thermal",upper_threshold_critical="75"} 45.0
+health{MemberId="17",Name="AOC_PORT6 Temp",SensorNumber="127",Status_Health="OK",module="thermal",upper_threshold_critical="75"} 0.0
+health{MemberId="18",Name="AOC_PORT7 Temp",ReadingCelsius="50",SensorNumber="128",module="thermal",upper_threshold_critical="75"} 50.0
+health{MemberId="18",Name="AOC_PORT7 Temp",SensorNumber="128",Status_Health="OK",module="thermal",upper_threshold_critical="75"} 0.0
+health{MemberId="19",Name="AOC_PORT8 Temp",ReadingCelsius="53",SensorNumber="129",module="thermal",upper_threshold_critical="75"} 53.0
+health{MemberId="19",Name="AOC_PORT8 Temp",SensorNumber="129",Status_Health="OK",module="thermal",upper_threshold_critical="75"} 0.0
+health{MemberId="20",Name="AOC_PORT9 Temp",ReadingCelsius="54",SensorNumber="130",module="thermal",upper_threshold_critical="75"} 54.0
+health{MemberId="20",Name="AOC_PORT9 Temp",SensorNumber="130",Status_Health="OK",module="thermal",upper_threshold_critical="75"} 0.0
+health{MemberId="21",Name="AOC_PORT11 Temp",ReadingCelsius="49",SensorNumber="131",module="thermal",upper_threshold_critical="75"} 49.0
+health{MemberId="21",Name="AOC_PORT11 Temp",SensorNumber="131",Status_Health="OK",module="thermal",upper_threshold_critical="75"} 0.0
+health{MemberId="22",Name="AOC_PORT12 Temp",ReadingCelsius="None",SensorNumber="132",module="thermal",upper_threshold_critical="None"} NaN
+health{MemberId="22",Name="AOC_PORT12 Temp",SensorNumber="132",Status_Health="None",module="thermal",upper_threshold_critical="None"} 5.0
+health{MemberId="23",Name="AOC_PORT2 Temp",ReadingCelsius="56",SensorNumber="133",module="thermal",upper_threshold_critical="75"} 56.0
+health{MemberId="23",Name="AOC_PORT2 Temp",SensorNumber="133",Status_Health="OK",module="thermal",upper_threshold_critical="75"} 0.0
+health{MemberId="24",Name="AOC_NIC3 Temp",ReadingCelsius="52",SensorNumber="160",module="thermal",upper_threshold_critical="100"} 52.0
+health{MemberId="24",Name="AOC_NIC3 Temp",SensorNumber="160",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="25",Name="AOC_NIC4 Temp",ReadingCelsius="52",SensorNumber="161",module="thermal",upper_threshold_critical="100"} 52.0
+health{MemberId="25",Name="AOC_NIC4 Temp",SensorNumber="161",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="26",Name="AOC_NIC5 Temp",ReadingCelsius="46",SensorNumber="162",module="thermal",upper_threshold_critical="100"} 46.0
+health{MemberId="26",Name="AOC_NIC5 Temp",SensorNumber="162",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="27",Name="AOC_NIC6 Temp",ReadingCelsius="43",SensorNumber="163",module="thermal",upper_threshold_critical="100"} 43.0
+health{MemberId="27",Name="AOC_NIC6 Temp",SensorNumber="163",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="28",Name="AOC_NIC7 Temp",ReadingCelsius="48",SensorNumber="164",module="thermal",upper_threshold_critical="100"} 48.0
+health{MemberId="28",Name="AOC_NIC7 Temp",SensorNumber="164",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="29",Name="AOC_NIC8 Temp",ReadingCelsius="52",SensorNumber="165",module="thermal",upper_threshold_critical="100"} 52.0
+health{MemberId="29",Name="AOC_NIC8 Temp",SensorNumber="165",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="30",Name="AOC_NIC9 Temp",ReadingCelsius="50",SensorNumber="166",module="thermal",upper_threshold_critical="100"} 50.0
+health{MemberId="30",Name="AOC_NIC9 Temp",SensorNumber="166",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="31",Name="AOC_NIC11 Temp",ReadingCelsius="66",SensorNumber="167",module="thermal",upper_threshold_critical="95"} 66.0
+health{MemberId="31",Name="AOC_NIC11 Temp",SensorNumber="167",Status_Health="OK",module="thermal",upper_threshold_critical="95"} 0.0
+health{MemberId="32",Name="AOC_NIC12 Temp",ReadingCelsius="58",SensorNumber="168",module="thermal",upper_threshold_critical="95"} 58.0
+health{MemberId="32",Name="AOC_NIC12 Temp",SensorNumber="168",Status_Health="OK",module="thermal",upper_threshold_critical="95"} 0.0
+health{MemberId="33",Name="AOM_NIC Temp",ReadingCelsius="37",SensorNumber="169",module="thermal",upper_threshold_critical="100"} 37.0
+health{MemberId="33",Name="AOM_NIC Temp",SensorNumber="169",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="34",Name="P1_DIMMA~F Temp",ReadingCelsius="30",SensorNumber="176",module="thermal",upper_threshold_critical="85"} 30.0
+health{MemberId="34",Name="P1_DIMMA~F Temp",SensorNumber="176",Status_Health="OK",module="thermal",upper_threshold_critical="85"} 0.0
+health{MemberId="35",Name="P1_DIMMG~L Temp",ReadingCelsius="30",SensorNumber="177",module="thermal",upper_threshold_critical="85"} 30.0
+health{MemberId="35",Name="P1_DIMMG~L Temp",SensorNumber="177",Status_Health="OK",module="thermal",upper_threshold_critical="85"} 0.0
+health{MemberId="36",Name="P2_DIMMA~F Temp",ReadingCelsius="30",SensorNumber="178",module="thermal",upper_threshold_critical="85"} 30.0
+health{MemberId="36",Name="P2_DIMMA~F Temp",SensorNumber="178",Status_Health="OK",module="thermal",upper_threshold_critical="85"} 0.0
+health{MemberId="37",Name="P2_DIMMG~L Temp",ReadingCelsius="30",SensorNumber="179",module="thermal",upper_threshold_critical="85"} 30.0
+health{MemberId="37",Name="P2_DIMMG~L Temp",SensorNumber="179",Status_Health="OK",module="thermal",upper_threshold_critical="85"} 0.0
+health{MemberId="38",Name="HGX GPU Temp",ReadingCelsius="41",SensorNumber="208",module="thermal",upper_threshold_critical="88"} 41.0
+health{MemberId="38",Name="HGX GPU Temp",SensorNumber="208",Status_Health="OK",module="thermal",upper_threshold_critical="88"} 0.0
+health{MemberId="39",Name="HGX HBM Temp",ReadingCelsius="42",SensorNumber="209",module="thermal",upper_threshold_critical="105"} 42.0
+health{MemberId="39",Name="HGX HBM Temp",SensorNumber="209",Status_Health="OK",module="thermal",upper_threshold_critical="105"} 0.0
+health{MemberId="40",Name="HGX NVLink Temp",ReadingCelsius="44",SensorNumber="210",module="thermal",upper_threshold_critical="105"} 44.0
+health{MemberId="40",Name="HGX NVLink Temp",SensorNumber="210",Status_Health="OK",module="thermal",upper_threshold_critical="105"} 0.0
+health{MemberId="41",Name="HGX RTMER Temp",ReadingCelsius="78",SensorNumber="211",module="thermal",upper_threshold_critical="105"} 78.0
+health{MemberId="41",Name="HGX RTMER Temp",SensorNumber="211",Status_Health="OK",module="thermal",upper_threshold_critical="105"} 0.0
+health{MemberId="42",Name="HGX FPGA Temp",ReadingCelsius="46",SensorNumber="216",module="thermal",upper_threshold_critical="95"} 46.0
+health{MemberId="42",Name="HGX FPGA Temp",SensorNumber="216",Status_Health="OK",module="thermal",upper_threshold_critical="95"} 0.0
+health{MemberId="43",Name="HGX Inlet Temp",ReadingCelsius="32",SensorNumber="218",module="thermal",upper_threshold_critical="85"} 32.0
+health{MemberId="43",Name="HGX Inlet Temp",SensorNumber="218",Status_Health="OK",module="thermal",upper_threshold_critical="85"} 0.0
+health{MemberId="44",Name="HGX HSC Temp",ReadingCelsius="49",SensorNumber="219",module="thermal",upper_threshold_critical="100"} 49.0
+health{MemberId="44",Name="HGX HSC Temp",SensorNumber="219",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="45",Name="HGX T-Limit",ReadingCelsius="46",SensorNumber="220",module="thermal",upper_threshold_critical="None"} 46.0
+health{MemberId="45",Name="HGX T-Limit",SensorNumber="220",Status_Health="OK",module="thermal",upper_threshold_critical="None"} 0.0
+health{MemberId="46",Name="HGX Board Temp",ReadingCelsius="52",SensorNumber="221",module="thermal",upper_threshold_critical="85"} 52.0
+health{MemberId="46",Name="HGX Board Temp",SensorNumber="221",Status_Health="OK",module="thermal",upper_threshold_critical="85"} 0.0
+health{MemberId="47",Name="HGX NVMGMT Temp",ReadingCelsius="66",SensorNumber="222",module="thermal",upper_threshold_critical="100"} 66.0
+health{MemberId="47",Name="HGX NVMGMT Temp",SensorNumber="222",Status_Health="OK",module="thermal",upper_threshold_critical="100"} 0.0
+health{MemberId="48",Name="PLX1 Temp",ReadingCelsius="49",SensorNumber="224",module="thermal",upper_threshold_critical="110"} 49.0
+health{MemberId="48",Name="PLX1 Temp",SensorNumber="224",Status_Health="OK",module="thermal",upper_threshold_critical="110"} 0.0
+health{MemberId="49",Name="PLX2 Temp",ReadingCelsius="41",SensorNumber="225",module="thermal",upper_threshold_critical="110"} 41.0
+health{MemberId="49",Name="PLX2 Temp",SensorNumber="225",Status_Health="OK",module="thermal",upper_threshold_critical="110"} 0.0
+health{MemberId="50",Name="PLX3 Temp",ReadingCelsius="40",SensorNumber="226",module="thermal",upper_threshold_critical="110"} 40.0
+health{MemberId="50",Name="PLX3 Temp",SensorNumber="226",Status_Health="OK",module="thermal",upper_threshold_critical="110"} 0.0
+health{MemberId="51",Name="PLX4 Temp",ReadingCelsius="49",SensorNumber="227",module="thermal",upper_threshold_critical="110"} 49.0
+health{MemberId="51",Name="PLX4 Temp",SensorNumber="227",Status_Health="OK",module="thermal",upper_threshold_critical="110"} 0.0
+health{MemberId="0",Name="Front Fan",Reading="4900",SensorNumber="65",linkvalue="fancontroller",module="fans"} 4900.0
+health{MemberId="0",Name="Front Fan",SensorNumber="65",Status_Health="OK",linkvalue="fancontroller",module="fans"} 0.0
+health{MemberId="1",Name="Rear Fan A",Reading="2380",SensorNumber="70",linkvalue="fancontroller",module="fans"} 2380.0
+health{MemberId="1",Name="Rear Fan A",SensorNumber="70",Status_Health="OK",linkvalue="fancontroller",module="fans"} 0.0
+health{MemberId="2",Name="Rear Fan B",Reading="2520",SensorNumber="75",linkvalue="fancontroller",module="fans"} 2520.0
+health{MemberId="2",Name="Rear Fan B",SensorNumber="75",Status_Health="OK",linkvalue="fancontroller",module="fans"} 0.0
+health{MemberId="3",Name="PS Fan 1~2",Reading="4620",SensorNumber="144",linkvalue="fancontroller",module="fans"} 4620.0
+health{MemberId="3",Name="PS Fan 1~2",SensorNumber="144",Status_Health="OK",linkvalue="fancontroller",module="fans"} 0.0
+health{MemberId="4",Name="PS Fan 3~6",Reading="4620",SensorNumber="146",linkvalue="fancontroller",module="fans"} 4620.0
+health{MemberId="4",Name="PS Fan 3~6",SensorNumber="146",Status_Health="OK",linkvalue="fancontroller",module="fans"} 0.0
+health{MemberId="5",Name="MB Fan",Reading="7560",SensorNumber="150",linkvalue="fancontroller",module="fans"} 7560.0
+health{MemberId="5",Name="MB Fan",SensorNumber="150",Status_Health="OK",linkvalue="fancontroller",module="fans"} 0.0
+health{MemberId="0",Name="System Power Control",PowerConsumedWatts="3681",module="power_control"} 3681.0
+health{MemberId="0",Name="System Power Control",Status_Health="OK",module="power_control"} 0.0
+health{MemberId="0",Name="System Power Control",Status_State="Enabled",module="power_control"} 0.0
+health{FirmwareVersion="1.1",MemberId="0",Model="PWS-5K26G-2R1",Name="Power Supply Bay 1",PartNumber="***-***",SerialNumber="***************",Status_Health="OK",module="powersupplies"} 0.0
+health{FirmwareVersion="1.1",MemberId="0",Model="PWS-5K26G-2R1",Name="Power Supply Bay 1",PartNumber="***-***",SerialNumber="***************",Status_State="Enabled",module="powersupplies"} 0.0
+health{FirmwareVersion="1.1",MemberId="1",Model="PWS-5K26G-2R1",Name="Power Supply Bay 2",PartNumber="***-***",SerialNumber="***************",Status_Health="OK",module="powersupplies"} 0.0
+health{FirmwareVersion="1.1",MemberId="1",Model="PWS-5K26G-2R1",Name="Power Supply Bay 2",PartNumber="***-***",SerialNumber="***************",Status_State="Enabled",module="powersupplies"} 0.0
+health{FirmwareVersion="1.1",MemberId="2",Model="PWS-5K26G-2R1",Name="Power Supply Bay 3",PartNumber="***-***",SerialNumber="***************",Status_Health="OK",module="powersupplies"} 0.0
+health{FirmwareVersion="1.1",MemberId="2",Model="PWS-5K26G-2R1",Name="Power Supply Bay 3",PartNumber="***-***",SerialNumber="***************",Status_State="Enabled",module="powersupplies"} 0.0
+health{FirmwareVersion="1.1",MemberId="3",Model="PWS-5K26G-2R1",Name="Power Supply Bay 4",PartNumber="***-***",SerialNumber="***************",Status_Health="OK",module="powersupplies"} 0.0
+health{FirmwareVersion="1.1",MemberId="3",Model="PWS-5K26G-2R1",Name="Power Supply Bay 4",PartNumber="***-***",SerialNumber="***************",Status_State="Enabled",module="powersupplies"} 0.0
+health{FirmwareVersion="1.1",MemberId="4",Model="PWS-5K26G-2R1",Name="Power Supply Bay 5",PartNumber="***-***",SerialNumber="***************",Status_Health="OK",module="powersupplies"} 0.0
+health{FirmwareVersion="1.1",MemberId="4",Model="PWS-5K26G-2R1",Name="Power Supply Bay 5",PartNumber="***-***",SerialNumber="***************",Status_State="Enabled",module="powersupplies"} 0.0
+health{FirmwareVersion="1.1",MemberId="5",Model="PWS-5K26G-2R1",Name="Power Supply Bay 6",PartNumber="***-***",SerialNumber="***************",Status_Health="OK",module="powersupplies"} 0.0
+health{FirmwareVersion="1.1",MemberId="5",Model="PWS-5K26G-2R1",Name="Power Supply Bay 6",PartNumber="***-***",SerialNumber="***************",Status_State="Enabled",module="powersupplies"} 0.0
+health{Id="HA-RAID",Name="HA Storage System",Status_Health="OK",module="storages"} 0.0
+health{Id="HA-RAID",Name="HA Storage System",Status_State="Enabled",module="storages"} 0.0
+health{FirmwareVersion="5.300.04-4030",Id="0",Manufacturer="Broadcom",Model="SAS 3808N iMR",Name="Storage Controller 0",SerialNumber="************",Status_Health="OK",module="ha_controller",parent_id="HA-RAID"} 0.0
+health{FirmwareVersion="5.300.04-4030",Id="0",Manufacturer="Broadcom",Model="SAS 3808N iMR",Name="Storage Controller 0",SerialNumber="************",Status_State="Enabled",module="ha_controller",parent_id="HA-RAID"} 0.0
+health{CapacityBytes="1919816826880",Id="Controller.0.Volume.1",VolumeType="Mirrored",module="ha_volume",parent_id="HA-RAID"} 1.91981682688e+012
+health{Id="Disk.Bay.0",Manufacturer="NVMe",MediaType="SSD",Model="SAMSUNG MZ1L21T9",Name="Disk.Bay.0",SerialNumber="**************",Status_Health="OK",module="ha_disks",parent_id="HA-RAID"} 0.0
+health{Id="Disk.Bay.0",Manufacturer="NVMe",MediaType="SSD",Model="SAMSUNG MZ1L21T9",Name="Disk.Bay.0",SerialNumber="**************",Status_State="Enabled",module="ha_disks",parent_id="HA-RAID"} 0.0
+health{CapacityBytes="1919816826880",Id="Disk.Bay.0",Manufacturer="NVMe",MediaType="SSD",Model="SAMSUNG MZ1L21T9",Name="Disk.Bay.0",SerialNumber="**************",module="ha_disks",parent_id="HA-RAID"} 1.91981682688e+012
+health{CapacityBytes="1919816826880",Id="Disk.Bay.0",Manufacturer="NVMe",MediaType="SSD",Model="SAMSUNG MZ1L21T9",Name="Disk.Bay.0",SerialNumber="**************",module="ha_disks",parent_id="HA-RAID"} 1.91981682688e+012
+health{Id="Disk.Bay.1",Manufacturer="NVMe",MediaType="SSD",Model="SAMSUNG MZ1L21T9",Name="Disk.Bay.1",SerialNumber="**************",Status_Health="OK",module="ha_disks",parent_id="HA-RAID"} 0.0
+health{Id="Disk.Bay.1",Manufacturer="NVMe",MediaType="SSD",Model="SAMSUNG MZ1L21T9",Name="Disk.Bay.1",SerialNumber="**************",Status_State="Enabled",module="ha_disks",parent_id="HA-RAID"} 0.0
+health{CapacityBytes="1919816826880",Id="Disk.Bay.1",Manufacturer="NVMe",MediaType="SSD",Model="SAMSUNG MZ1L21T9",Name="Disk.Bay.1",SerialNumber="**************",module="ha_disks",parent_id="HA-RAID"} 1.91981682688e+012
+health{CapacityBytes="1919816826880",Id="Disk.Bay.1",Manufacturer="NVMe",MediaType="SSD",Model="SAMSUNG MZ1L21T9",Name="Disk.Bay.1",SerialNumber="**************",module="ha_disks",parent_id="HA-RAID"} 1.91981682688e+012
+health{FirmwareVersion="28.43.3608",Id="NIC1",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_Health="OK",module="pcie_devices"} 0.0
+health{FirmwareVersion="28.43.3608",Id="NIC1",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_State="Enabled",module="pcie_devices"} 0.0
+health{FirmwareVersion="9.40 0x8000F1A2",Id="NIC10",Manufacturer="Supermicro",Model="AOM-DP805-IO",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_Health="OK",module="pcie_devices"} 0.0
+health{FirmwareVersion="9.40 0x8000F1A2",Id="NIC10",Manufacturer="Supermicro",Model="AOM-DP805-IO",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_State="Disabled",module="pcie_devices"} 500.0
+health{FirmwareVersion="28.43.3608",Id="NIC11",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_Health="OK",module="pcie_devices"} 0.0
+health{FirmwareVersion="28.43.3608",Id="NIC11",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_State="Enabled",module="pcie_devices"} 0.0
+health{FirmwareVersion="28.43.3608",Id="NIC2",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_Health="OK",module="pcie_devices"} 0.0
+health{FirmwareVersion="28.43.3608",Id="NIC2",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_State="Enabled",module="pcie_devices"} 0.0
+health{FirmwareVersion="28.43.3608",Id="NIC3",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_Health="OK",module="pcie_devices"} 0.0
+health{FirmwareVersion="28.43.3608",Id="NIC3",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_State="Enabled",module="pcie_devices"} 0.0
+health{FirmwareVersion="28.43.3608",Id="NIC4",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_Health="OK",module="pcie_devices"} 0.0
+health{FirmwareVersion="28.43.3608",Id="NIC4",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_State="Enabled",module="pcie_devices"} 0.0
+health{FirmwareVersion="28.43.3608",Id="NIC5",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_Health="OK",module="pcie_devices"} 0.0
+health{FirmwareVersion="28.43.3608",Id="NIC5",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_State="Enabled",module="pcie_devices"} 0.0
+health{FirmwareVersion="28.43.3608",Id="NIC6",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_Health="OK",module="pcie_devices"} 0.0
+health{FirmwareVersion="28.43.3608",Id="NIC6",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_State="Enabled",module="pcie_devices"} 0.0
+health{FirmwareVersion="28.43.3608",Id="NIC7",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_Health="OK",module="pcie_devices"} 0.0
+health{FirmwareVersion="28.43.3608",Id="NIC7",Manufacturer="Supermicro",Model="MCX75310AAS-NEAT",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_State="Enabled",module="pcie_devices"} 0.0
+health{FirmwareVersion="32.42.1000",Id="NIC8",Manufacturer="Supermicro",Model="900-9D3B6-00CV-AA0",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_Health="OK",module="pcie_devices"} 0.0
+health{FirmwareVersion="32.42.1000",Id="NIC8",Manufacturer="Supermicro",Model="900-9D3B6-00CV-AA0",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_State="Enabled",module="pcie_devices"} 0.0
+health{FirmwareVersion="32.42.1000",Id="NIC9",Manufacturer="Supermicro",Model="900-9D3B6-00CV-AA0",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_Health="OK",module="pcie_devices"} 0.0
+health{FirmwareVersion="32.42.1000",Id="NIC9",Manufacturer="Supermicro",Model="900-9D3B6-00CV-AA0",Name="PCIe Device",PartNumber="***-***",SerialNumber="************",Status_State="Enabled",module="pcie_devices"} 0.0
+health{Id="ToManager",LinkStatus="None",MACAddress="**:**:**:**:**:**",Name="Host Ethernet Interface",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="ToManager",LinkStatus="None",MACAddress="**:**:**:**:**:**",Name="Host Ethernet Interface",Status_State="Disabled",module="ethernetinterfaces"} 500.0
+health{Id="1",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC1",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="1",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC1",Status_State="Enabled",module="ethernetinterfaces"} 0.0
+health{Id="2",LinkStatus="LinkDown",MACAddress="**:**:**:**:**:**",Name="AOC_NIC10",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="2",LinkStatus="LinkDown",MACAddress="**:**:**:**:**:**",Name="AOC_NIC10",Status_State="Enabled",module="ethernetinterfaces"} 0.0
+health{Id="3",LinkStatus="LinkDown",MACAddress="**:**:**:**:**:**",Name="AOC_NIC10",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="3",LinkStatus="LinkDown",MACAddress="**:**:**:**:**:**",Name="AOC_NIC10",Status_State="Enabled",module="ethernetinterfaces"} 0.0
+health{Id="4",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC11",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="4",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC11",Status_State="Enabled",module="ethernetinterfaces"} 0.0
+health{Id="5",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC2",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="5",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC2",Status_State="Enabled",module="ethernetinterfaces"} 0.0
+health{Id="6",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC3",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="6",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC3",Status_State="Enabled",module="ethernetinterfaces"} 0.0
+health{Id="7",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC4",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="7",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC4",Status_State="Enabled",module="ethernetinterfaces"} 0.0
+health{Id="8",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC5",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="8",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC5",Status_State="Enabled",module="ethernetinterfaces"} 0.0
+health{Id="9",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC6",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="9",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC6",Status_State="Enabled",module="ethernetinterfaces"} 0.0
+health{Id="10",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC7",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="10",LinkStatus="LinkDown",MACAddress="00:00:00:00:00:00",Name="AOC_NIC7",Status_State="Enabled",module="ethernetinterfaces"} 0.0
+health{Id="11",LinkStatus="LinkUp",MACAddress="**:**:**:**:**:**",Name="AOC_NIC8",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="11",LinkStatus="LinkUp",MACAddress="**:**:**:**:**:**",Name="AOC_NIC8",Status_State="Enabled",module="ethernetinterfaces"} 0.0
+health{Id="12",LinkStatus="LinkUp",MACAddress="**:**:**:**:**:**",Name="AOC_NIC8",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="12",LinkStatus="LinkUp",MACAddress="**:**:**:**:**:**",Name="AOC_NIC8",Status_State="Enabled",module="ethernetinterfaces"} 0.0
+health{Id="13",LinkStatus="LinkDown",MACAddress="**:**:**:**:**:**",Name="AOC_NIC9",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="13",LinkStatus="LinkDown",MACAddress="**:**:**:**:**:**",Name="AOC_NIC9",Status_State="Enabled",module="ethernetinterfaces"} 0.0
+health{Id="14",LinkStatus="LinkDown",MACAddress="**:**:**:**:**:**",Name="AOC_NIC9",Status_Health="OK",module="ethernetinterfaces"} 0.0
+health{Id="14",LinkStatus="LinkDown",MACAddress="**:**:**:**:**:**",Name="AOC_NIC9",Status_State="Enabled",module="ethernetinterfaces"} 0.0
+# HELP redfish_scrape_duration_seconds Server Monitoring Redfish Scrape duration in seconds
+# TYPE redfish_scrape_duration_seconds gauge
+redfish_scrape_duration_seconds{modules="system,processors,memory,gpu_system,gpu_processors,gpu_memory,thermal,fans,power_control,powersupplies,storages,ha_controller,ha_volume,ha_disks,nvme_controller,nvme_disks,pcie_devices,ethernetinterfaces"} 12.09
