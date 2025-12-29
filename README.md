@@ -158,7 +158,7 @@ cd redfish-exporter
 ```yaml
 listen_port: 9640
 
-haein_gpu:
+my_gpu:
   auth:
     username: "ADMIN"
     password: "YourPassword"
