@@ -1,7 +1,3 @@
-# Redfish Exporter
-
-A Prometheus exporter for collecting hardware metrics from servers via the Redfish API. This exporter specializes in monitoring GPU servers and standard server infrastructure through IPMI/Redfish interfaces.
-
 ## Architecture
 
 ### Overview
@@ -455,6 +451,10 @@ python redfish_exporter.py -d
    - Assign minimal required privileges
    - Monitor for unauthorized access
    - Audit BMC access logs
+
+## Acknowledgments
+
+This project was inspired by and references the [SAP Converged Cloud Redfish Exporter](https://github.com/sapcc/redfish-exporter). We appreciate their contribution to the open-source community.
 
 ## License
 
