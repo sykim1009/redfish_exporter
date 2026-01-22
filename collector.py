@@ -1,22 +1,58 @@
 import redfish
-import os
 import logging
 import time
-import subprocess
 import socket
+import yaml
+import math
+from ping3 import ping
 from prometheus_client.metrics_core import GaugeMetricFamily
 
 class RedfishMetricsCollector(object):
-    def __init__(self, module, host, username, password, code):
-        self._module = module
-        self._host = f"{host}-ipmi"
-        self._username = username
-        self._password = password
-        self._code = code
+    def __init__(self, module, host, config):
+        """
+        Args:
+            module: 쉼표로 구분된 모듈 문자열 (예: "processors,memory,thermal") 또는 "all"
+            host: 서버 호스트명
+            config: 서버 타입별 설정 딕셔너리
+        """
+        self._base_host = host
+        self._config = config
         self._timeout = 30
         self._redfish_object = None
         
-        # 상태 매핑 딕셔너리 - 소문자로 통일
+        # config에서 인증 정보 및 설정 가져오기
+        self._username = config.get('auth', {}).get('username')
+        self._password = config.get('auth', {}).get('password')
+        self._suffix = config.get('suffix', '-ipmi')
+        self._host = f"{host}{self._suffix}"
+        
+        # 전체 메트릭 설정
+        all_metrics_config = config.get('metrics', {})
+        
+        # 모듈 파싱 및 필터링
+        if module == 'all':
+            # 모든 모듈 수집
+            self._metrics_config = all_metrics_config
+            self._selected_modules = list(all_metrics_config.keys())
+        else:
+            # 쉼표로 구분된 모듈 파싱
+            requested_modules = [m.strip() for m in module.split(',')]
+            self._selected_modules = requested_modules
+            
+            # 요청된 모듈만 필터링
+            self._metrics_config = {
+                k: v for k, v in all_metrics_config.items() 
+                if k in requested_modules
+            }
+            
+            # 존재하지 않는 모듈 경고
+            available_modules = set(all_metrics_config.keys())
+            invalid_modules = set(requested_modules) - available_modules
+            if invalid_modules:
+                logging.warning(f"Requested modules not found in config: {invalid_modules}")
+                logging.warning(f"Available modules: {available_modules}")
+        
+        # 상태 매핑 딕셔너리
         self._status_map = {
             'off': 0, 'on': 1, 'absent': 6, 'ok': 0,
             'operable': 0, 'enabled': 0, 'good': 0,
@@ -42,37 +78,38 @@ class RedfishMetricsCollector(object):
                 result = result.get(key, default)
             else:
                 return default
-        return str(result).strip() if result else default
+        return str(result).strip() if result and result != 'None' else default
     
-    def ping_check(self):
-        """ping을 사용하지 않고 socket으로 빠르게 연결 확인"""
+    def _get_value_from_path(self, data, path):
+        """path 리스트를 사용하여 중첩된 값 추출"""
+        if not path:
+            return 'None'
+        return self._safe_get(data, *path)
+    
+    def connection_check(self):
         try:
-            logging.debug(f"Target {self._host}: Connection Check")
-            # socket을 사용한 빠른 연결 확인 (timeout 3초)
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout(3)
-            result = sock.connect_ex((self._host, 443))
-            sock.close()
+            logging.debug(f"Target {self._host}: Ping Check")
+            result = ping(self._host)
             
-            if result == 0:
+            if result is not False:
                 self._metrics.add_sample(
-                    self._module, value=1,
-                    labels={'labeltype': 'ping_check', 'ping_check': 'OK'}
+                    'health', value=1,
+                    labels={'module': 'connection', 'status': 'OK'}
                 )
                 logging.debug(f"Target {self._host}: Connection Check OK")
                 return True
             else:
                 self._metrics.add_sample(
-                    self._module, value=0,
-                    labels={'labeltype': 'ping_check', 'ping_check': 'Fail'}
+                    'health', value=0,
+                    labels={'module': 'connection', 'status': 'Fail'}
                 )
                 logging.warning(f"Target {self._host}: Connection check failed")
                 return False
         except Exception as e:
             logging.warning(f"Target {self._host}: Connection check error: {e}")
             self._metrics.add_sample(
-                self._module, value=0,
-                labels={'labeltype': 'ping_check', 'ping_check': 'Fail'}
+                'health', value=0,
+                labels={'module': 'connection', 'status': 'Error'}
             )
             return False
     
@@ -85,20 +122,20 @@ class RedfishMetricsCollector(object):
                 username=self._username,
                 password=self._password,
                 timeout=self._timeout,
-                max_retry=2,
+                max_retry=5,
                 default_prefix='/redfish/v1'
             )
             self._redfish_object.login(auth="session")
             self._metrics.add_sample(
-                self._module, value=1,
-                labels={'labeltype': 'redfish_login', 'redfish_login': 'OK'}
+                'health', value=1,
+                labels={'module': 'login', 'status': 'OK'}
             )
             logging.debug(f"Target {self._host}: Get Redfish Object OK")
             return True
         except Exception as e:
             self._metrics.add_sample(
-                self._module, value=0,
-                labels={'labeltype': 'redfish_login', 'redfish_login': 'Failed'}
+                'health', value=0,
+                labels={'module': 'login', 'status': 'Failed'}
             )
             logging.error(f"Target {self._host}: Authorization Error: {e}")
             return False
@@ -115,235 +152,104 @@ class RedfishMetricsCollector(object):
         except Exception as e:
             logging.error(f"Target {self._host}: Error fetching {path}: {e}")
             return None
-
-    def _collect_gpu_system_info(self, gpu_data):
-        """시스템 기본 정보 수집"""
-        status_health = self._safe_get(gpu_data, 'Status', 'Health')
-        power_state = self._safe_get(gpu_data, 'PowerState')
-        id = self._safe_get(gpu_data, 'Id')
-        manufacturer = self._safe_get(gpu_data, 'Manufacturer')
-        
-        common_labels = {
-            'Manufacturer': manufacturer,
-            'Id': id,
-        }
-        
-        # 시스템 헬스
-        self._metrics.add_sample(
-            self._module,
-            value=self._map_status(status_health),
-            labels={'labeltype': 'gpu_system_health', 'Status_Health': status_health, **common_labels}
-        )
-        
-        # 전원 상태
-        self._metrics.add_sample(
-            self._module,
-            value=self._map_status(power_state),
-            labels={'labeltype': 'gpu_system_power', 'PowerState': power_state, **common_labels}
-        )
-
-    def _collect_gpu_processors(self, gpu_data):
-        """프로세서 정보 수집"""
-        processor_path = self._safe_get(gpu_data, 'Processors', '@odata.id')
-        if processor_path == 'None':
+    
+    def _collect_metric_group(self, group_name, group_config):
+        """설정 기반으로 메트릭 그룹 수집"""
+        base_path = group_config.get('base_path')
+        if not base_path:
+            logging.warning(f"No base_path for {group_name}")
             return
         
-        processor_collection = self._get_redfish_data(processor_path)
-        if not processor_collection:
+        # 베이스 데이터 가져오기
+        base_data = self._get_redfish_data(base_path)
+        if not base_data:
+            logging.warning(f"Failed to get data for {group_name} at {base_path}")
             return
         
-        members = processor_collection.get('Members', [])
-        for processor in members:
-            processor_data = self._get_redfish_data(processor.get('@odata.id'))
-            if not processor_data:
-                continue
+        # iterate 설정이 있으면 배열 순회
+        iterate_key = group_config.get('iterate')
+        iterate_field = group_config.get('iterate_field')
+        
+        if iterate_key:
+            # Members 배열 순회 (예: Processors)
+            members = base_data.get(iterate_key, [])
+            for member in members:
+                member_path = member.get('@odata.id')
+                if member_path:
+                    member_data = self._get_redfish_data(member_path)
+                    if member_data:
+                        self._process_metric_data(group_name, group_config, member_data)
+        elif iterate_field:
+            # 특정 필드 배열 순회 (예: Temperatures)
+            items = base_data.get(iterate_field, [])
+            for item in items:
+                self._process_metric_data(group_name, group_config, item)
+        else:
+            # 단일 객체 처리
+            self._process_metric_data(group_name, group_config, base_data)
+    
+    def _process_metric_data(self, group_name, group_config, data):
+        """단일 데이터 객체에서 메트릭 추출 및 등록"""
+        metrics_config = group_config.get('metrics', {})
+        value_configs = metrics_config.get('values', [])
+        label_configs = metrics_config.get('labels', [])
+        
+        # 라벨 수집 (module 라벨 추가)
+        labels = {'module': group_name}
+        for label_config in label_configs:
+            label_name = label_config.get('name')
             
-            if self._safe_get(processor_data, 'Id') == "FPGA_0":
-                labels = {
-                    'labeltype': 'gpu_processor',
-                    'Status_Health': self._safe_get(processor_data, 'Status', 'Health'),
-                    'FirmwareVersion': self._safe_get(processor_data, 'FirmwareVersion'),
-                    'Id': self._safe_get(processor_data, 'Id'),
-                    'Manufacturer': self._safe_get(processor_data, 'Manufacturer'),
-                    'Name': self._safe_get(processor_data, 'Name'),
-                }
-                self._metrics.add_sample(
-                    self._module,
-                    value=self._map_status(labels['Status_Health']),
-                    labels=labels
-                )
-
+            # value가 있으면 고정값 사용, 없으면 path에서 추출
+            if 'value' in label_config:
+                label_value = str(label_config['value'])
             else:
-                labels = {
-                    'labeltype': 'processor',
-                    'Status_Health': self._safe_get(processor_data, 'Status', 'Health'),
-                    'BaseSpeedMHz': self._safe_get(processor_data, 'BaseSpeedMHz'),
-                    'FirmwareVersion': self._safe_get(processor_data, 'FirmwareVersion'),
-                    'Id': self._safe_get(processor_data, 'Id'),
-                    'Manufacturer': self._safe_get(processor_data, 'Manufacturer'),
-                    'MaxSpeedMHz': self._safe_get(processor_data, 'MaxSpeedMHz'),
-                    'Model': self._safe_get(processor_data, 'Model'),
-                    'Name': self._safe_get(processor_data, 'Name'),
-                    'OperatingSpeedMHz': self._safe_get(processor_data, 'OperatingSpeedMHz'),
-                    'PartNumber': self._safe_get(processor_data, 'PartNumber'),
-                    'ProcessorType': self._safe_get(processor_data, 'ProcessorType'),
-                    'SerialNumber': self._safe_get(processor_data, 'SerialNumber'),
-                    'TotalThreads': self._safe_get(processor_data, 'TotalThreads')
-                }
+                label_path = label_config.get('path', [])
+                label_value = self._get_value_from_path(data, label_path)
             
-                self._metrics.add_sample(
-                    self._module,
-                    value=self._map_status(labels['Status_Health']),
-                    labels=labels
-                )
-
-    def _collect_gpu_memory(self, gpu_data):
-        """메모리 정보 수집"""
-        memory_path = self._safe_get(gpu_data, 'Memory', '@odata.id')
-        if memory_path == 'None':
-            return
+            labels[label_name] = label_value
         
-        memory_collection = self._get_redfish_data(memory_path)
-        if not memory_collection:
-            return
-        
-        members = memory_collection.get('Members', [])
-        for memory in members:
-            memory_data = self._get_redfish_data(memory.get('@odata.id'))
-            if not memory_data:
-                continue
+        # 값 메트릭 수집
+        for value_config in value_configs:
+            value_name = value_config.get('name')
+            value_path = value_config.get('path', [])
+            value_type = value_config.get('type', 'status')  # 기본값은 'status'
+            raw_value = self._get_value_from_path(data, value_path)
             
-            labels = {
-                'labeltype': 'gpu_memory',
-                'Status_Health': self._safe_get(memory_data, 'Status', 'Health'),
-                'CapacityMiB': self._safe_get(memory_data, 'CapacityMiB'),
-                'Id': self._safe_get(memory_data, 'Id'),
-                'MemoryDeviceType': self._safe_get(memory_data, 'MemoryDeviceType'),
-                'MemoryType': self._safe_get(memory_data, 'MemoryType'),
-                'Name': self._safe_get(memory_data, 'Name'),
-                'OperatingSpeedMhz': self._safe_get(memory_data, 'OperatingSpeedMhz'),
-            }
+            # 메트릭 라벨 복사
+            metric_labels = labels.copy()
             
+            # type에 따라 값 처리
+            if value_type == 'gauge':
+                # gauge 타입: 숫자 값 그대로 사용
+                try:
+                    numeric_value = float(raw_value)
+                except (ValueError, TypeError):
+                    # 숫자가 아니면 NaN
+                    numeric_value = math.nan
+                    logging.debug(f"Non-numeric gauge value for {group_name}.{value_name}: {raw_value}, using NaN")
+                
+                # gauge도 라벨에 메트릭 이름 추가
+                metric_labels[value_name] = str(raw_value)
+            else:
+                # status 타입: 상태 값을 숫자로 매핑
+                numeric_value = self._map_status(raw_value)
+                
+                # 라벨에 원본 값 추가
+                metric_labels[value_name] = raw_value
+            
+            # 메트릭 추가
             self._metrics.add_sample(
-                self._module,
-                value=self._map_status(labels['Status_Health']),
-                labels=labels
+                'health',
+                value=numeric_value,
+                labels=metric_labels
             )
-    
-    
-    def _collect_system_info(self, system_data):
-        """시스템 기본 정보 수집"""
-        status_health = self._safe_get(system_data, 'Status', 'Health')
-        power_state = self._safe_get(system_data, 'PowerState')
-        manufacturer = self._safe_get(system_data, 'Manufacturer')
-        model = self._safe_get(system_data, 'Model')
-        id = self._safe_get(system_data, 'Id')
-        part_number = self._safe_get(system_data, 'PartNumber')
-        serial_number = self._safe_get(system_data, 'SerialNumber')
-        
-        common_labels = {
-            'Id': id,
-            'Manufacturer': manufacturer,
-            'Model': model,
-            'PartNumber': part_number,
-            'SerialNumber': serial_number
-        }
-        
-        # 시스템 헬스
-        self._metrics.add_sample(
-            self._module,
-            value=self._map_status(status_health),
-            labels={'labeltype': 'system_health', 'Status_Health': status_health, **common_labels}
-        )
-        
-        # 전원 상태
-        self._metrics.add_sample(
-            self._module,
-            value=self._map_status(power_state),
-            labels={'labeltype': 'system_power', 'PowerState': power_state, **common_labels}
-        )
-    
-    def _collect_processors(self, system_data):
-        """프로세서 정보 수집"""
-        processor_path = self._safe_get(system_data, 'Processors', '@odata.id')
-        if processor_path == 'None':
-            return
-        
-        processor_collection = self._get_redfish_data(processor_path)
-        if not processor_collection:
-            return
-        
-        members = processor_collection.get('Members', [])
-        for processor in members:
-            processor_data = self._get_redfish_data(processor.get('@odata.id'))
-            if not processor_data:
-                continue
             
-            labels = {
-                'labeltype': 'processor',
-                'Status_Health': self._safe_get(processor_data, 'Status', 'Health'),
-                'Id': self._safe_get(processor_data, 'Id'),
-                'Manufacturer': self._safe_get(processor_data, 'Manufacturer'),
-                'InstructionSet': self._safe_get(processor_data, 'InstructionSet'),
-                'MaxSpeedMHz': self._safe_get(processor_data, 'MaxSpeedMHz'),
-                'Model': self._safe_get(processor_data, 'Model'),
-                'Name': self._safe_get(processor_data, 'Name'),
-                'ProcessorArchitecture': self._safe_get(processor_data, 'ProcessorArchitecture'),
-                'ProcessorType': self._safe_get(processor_data, 'ProcessorType'),
-                'Socket': self._safe_get(processor_data, 'Socket'),
-                'TotalCores': self._safe_get(processor_data, 'TotalCores'),
-                'TotalThreads': self._safe_get(processor_data, 'TotalThreads')
-            }
-            
-            self._metrics.add_sample(
-                self._module,
-                value=self._map_status(labels['Status_Health']),
-                labels=labels
-            )
-    
-    def _collect_memory(self, system_data):
-        """메모리 정보 수집"""
-        memory_path = self._safe_get(system_data, 'Memory', '@odata.id')
-        if memory_path == 'None':
-            return
-        
-        memory_collection = self._get_redfish_data(memory_path)
-        if not memory_collection:
-            return
-        
-        members = memory_collection.get('Members', [])
-        for memory in members:
-            memory_data = self._get_redfish_data(memory.get('@odata.id'))
-            if not memory_data:
-                continue
-            
-            labels = {
-                'labeltype': 'memory',
-                'Status_Health': self._safe_get(memory_data, 'Status', 'Health'),
-                'CapacityMiB': self._safe_get(memory_data, 'CapacityMiB'),
-                'DeviceLocator': self._safe_get(memory_data, 'DeviceLocator'),
-                'Id': self._safe_get(memory_data, 'Id'),
-                'Manufacturer': self._safe_get(memory_data, 'Manufacturer'),
-                'Model': self._safe_get(memory_data, 'Model'),
-                'MemoryDeviceType': self._safe_get(memory_data, 'MemoryDeviceType'),
-                'MemoryType': self._safe_get(memory_data, 'MemoryType'),
-                'Name': self._safe_get(memory_data, 'Name'),
-                'OperatingSpeedMhz': self._safe_get(memory_data, 'OperatingSpeedMhz'),
-                'PartNumber': self._safe_get(memory_data, 'PartNumber'),
-                'SerialNumber': self._safe_get(memory_data, 'SerialNumber')
-            }
-            
-            self._metrics.add_sample(
-                self._module,
-                value=self._map_status(labels['Status_Health']),
-                labels=labels
-            )
+            logging.debug(f"Added metric: {group_name}.{value_name} = {numeric_value} ({raw_value})")
     
     def collect(self):
-        """메트릭 수집 메인 메서드"""
         logging.getLogger('redfish').setLevel(logging.ERROR)
         self._metrics = GaugeMetricFamily(
-            self._module,
+            'health',
             'Server Monitoring Data',
             labels={}
         )
@@ -354,25 +260,38 @@ class RedfishMetricsCollector(object):
         )
         
         try:
-            if not self.ping_check():
+            # 수집할 모듈이 없으면 종료
+            if not self._metrics_config:
+                logging.warning(f"No valid modules to collect for {self._host}")
+                self._metrics.add_sample(
+                    'health', value=0,
+                    labels={'module': 'error', 'status': 'No valid modules'}
+                )
+                yield self._metrics
+                yield self._scrape_metrics
                 return
             
-            if not self.redfish_login():
-                return
+            logging.info(f"Target {self._host}: Collecting modules: {self._selected_modules}")
             
-            if self._code == 'haein_gpu':
-                system_data = self._get_redfish_data("/redfish/v1/Systems/1")
-                if system_data:
-                    self._collect_system_info(system_data)
-                    self._collect_processors(system_data)
-                    self._collect_memory(system_data)
-                
-                gpu_data = self._get_redfish_data("/redfish/v1/Systems/HGX_Baseboard_0")
-                if gpu_data:
-                    self._collect_gpu_system_info(gpu_data)
-                    self._collect_gpu_processors(gpu_data)
-                    self._collect_gpu_memory(gpu_data)                
-            
+            if not self.connection_check():
+                yield self._metrics
+                yield self._scrape_metrics
+            else:           
+                if not self.redfish_login():
+                    yield self._metrics
+                    yield self._scrape_metrics
+                else:
+                    for group_name, group_config in self._metrics_config.items():
+                        try:
+                            logging.debug(f"Collecting metrics for module: {group_name}")
+                            self._collect_metric_group(group_name, group_config)
+                        except Exception as e:
+                            logging.error(f"Error collecting {group_name}: {e}")
+                            self._metrics.add_sample(
+                                'health', value=0,
+                                labels={'module': group_name, 'status': 'collection_error'}
+                            )
+                            continue
         except Exception as err:
             logging.error(f"Target {self._host}: An exception occurred: {err}")
         finally:
@@ -389,6 +308,6 @@ class RedfishMetricsCollector(object):
             self._scrape_metrics.add_sample(
                 'redfish_scrape_duration_seconds',
                 value=duration,
-                labels={}
+                labels={'modules': ','.join(self._selected_modules)}
             )
             yield self._scrape_metrics
