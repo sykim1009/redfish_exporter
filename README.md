@@ -138,6 +138,7 @@ pip install fastapi
 pip install uvicorn
 pip install prometheus-client
 pip install pyyaml
+pip install ping3
 ```
 
 Or install from requirements.txt:
